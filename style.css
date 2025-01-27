@@ -132,3 +132,19 @@
     .restart-button:hover {
       transform: scale(1.1);
     }
+    
+    .timer {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .scoreboard {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    .scoreboard h3 {
+      margin-bottom: 10px;
+    }
+    

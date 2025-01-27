@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Memory Game</title>
-  
 </head>
 <body>
   <h1>Memory Game</h1>
   <div class="controls">
     <button onclick="startGame(16)">16 Cards</button>
-    <button onclick="startGame(36)">36 Cards</button> <!-- L'option 32 a été supprimée -->
+    <button onclick="startGame(36)">36 Cards</button>
   </div>
+  <div class="timer" id="timer">Temps : 0s</div>
   <div class="game-board"></div>
   <div class="win-message" id="winMessage">
-        <p>Tu es le GOAT !</p> 
+    <p>Tu es le GOAT !</p> 
     <img src="./assets/goat.avif"></img>
     <div class="sparkle">✨✨✨</div>
+    <div class="scoreboard" id="scoreboard"></div>
   </div>
   <button class="restart-button" id="restartButton" onclick="restartGame()">Recommencer</button>
   <script src="script.js"></script>

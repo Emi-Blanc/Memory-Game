@@ -1,93 +1,122 @@
+const gameBoard = document.querySelector('.game-board');
+const winMessage = document.getElementById('winMessage');
+const restartButton = document.getElementById('restartButton');
+const timerElement = document.getElementById('timer');
+const scoreboard = document.getElementById('scoreboard');
 
-    const gameBoard = document.querySelector('.game-board');
-    const winMessage = document.getElementById('winMessage');
-    const restartButton = document.getElementById('restartButton');
-    let currentSize = 16; // Taille de jeu par défaut
+let currentSize = 16; // Taille de jeu par défaut
+let firstCard = null;
+let lockBoard = false;
+let timer; // Référence au chronomètre
+let timeElapsed = 0; // Temps écoulé
+let scores = []; // Tableau des scores des 10 meilleurs joueurs
 
-    function startGame(size) {
-      currentSize = size;
-      // List of emojis
-      const emojiList = ['🧻', '🍌', '👹', '💩', '💋', '🥸', '🙀', '🤬', '🍑', '🔫', '🧮', '🎥', '📎', '🍥', '🥕', '🏰', '🪠', '🌈', '❤️', '🍆', '👾', '🐷', '🦄', '🍄', '🥜', '🦕', '🦜', '🧀', '🦷', '🧟', '🍕', '🎎'];
-      const emojis = emojiList.slice(0, size / 2); // Ajustement de la taille de l'emoji list
-      const cards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+function startGame(size) {
+  currentSize = size;
+  timeElapsed = 0; // Réinitialise le temps
+  updateTimer(); // Met à jour l'affichage du timer
 
-      // Set grid columns for a square grid
-      gameBoard.style.gridTemplateColumns = `repeat(${Math.sqrt(size)}, 1fr)`;
-      gameBoard.innerHTML = '';
+  // Arrête l'ancien timer et lance un nouveau
+  clearInterval(timer);
+  timer = setInterval(() => {
+    timeElapsed++;
+    updateTimer();
+  }, 1000);
 
-      // Create cards
-      cards.forEach((emoji) => {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.dataset.value = emoji;
-        card.addEventListener('click', handleCardClick);
-        gameBoard.appendChild(card);
-      });
+  // Réinitialisation du jeu
+  const emojiList = ['🧻', '🍌', '👹', '💩', '💋', '🥸', '🙀', '🤬', '🍑', '🔫', '🧮', '🎥', '📎', '🍥', '🥕', '🏰', '🪠', '🌈', '❤️', '🍆', '👾', '🐷', '🦄', '🍄', '🥜', '🦕', '🦜', '🧀', '🦷', '🧟', '🍕', '🎎'];
+  const emojis = emojiList.slice(0, size / 2);
+  const cards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
 
-      // Hide win message and restart button initially
-      winMessage.style.display = 'none';
-      restartButton.style.display = 'none';
-    }
+  gameBoard.style.gridTemplateColumns = `repeat(${Math.sqrt(size)}, 1fr)`;
+  gameBoard.innerHTML = '';
+  cards.forEach((emoji) => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.value = emoji;
+    card.addEventListener('click', handleCardClick);
+    gameBoard.appendChild(card);
+  });
 
-    let firstCard = null;
-    let lockBoard = false;
+  winMessage.style.display = 'none';
+  restartButton.style.display = 'none';
+}
 
-    function handleCardClick(e) {
-      const card = e.target;
-      if (lockBoard || card === firstCard || card.classList.contains('flipped')) return;
+function updateTimer() {
+  timerElement.textContent = `Temps : ${timeElapsed}s`;
+}
 
-      card.classList.add('flipped');
-      card.textContent = card.dataset.value;
+function handleCardClick(e) {
+  const card = e.target;
+  if (lockBoard || card === firstCard || card.classList.contains('flipped')) return;
 
-      if (!firstCard) {
-        firstCard = card;
-        return;
-      }
+  card.classList.add('flipped');
+  card.textContent = card.dataset.value;
 
-      checkForMatch(card);
-    }
+  if (!firstCard) {
+    firstCard = card;
+    return;
+  }
 
-    function checkForMatch(card) {
-      if (card.dataset.value === firstCard.dataset.value) {
-        card.classList.add('hidden');
-        firstCard.classList.add('hidden');
-        showSparkles(card, firstCard);
-        checkWin();
-        resetBoard();
-      } else {
-        lockBoard = true;
-        setTimeout(() => {
-          card.classList.remove('flipped');
-          card.textContent = '';
-          firstCard.classList.remove('flipped');
-          firstCard.textContent = '';
-          resetBoard();
-        }, 1000);
-      }
-    }
+  checkForMatch(card);
+}
 
-    function resetBoard() {
-      [firstCard, lockBoard] = [null, false];
-    }
+function checkForMatch(card) {
+  if (card.dataset.value === firstCard.dataset.value) {
+    card.classList.add('hidden');
+    firstCard.classList.add('hidden');
+    showSparkles(card, firstCard);
+    checkWin();
+    resetBoard();
+  } else {
+    lockBoard = true;
+    setTimeout(() => {
+      card.classList.remove('flipped');
+      card.textContent = '';
+      firstCard.classList.remove('flipped');
+      firstCard.textContent = '';
+      resetBoard();
+    }, 1000);
+  }
+}
 
-    function showSparkles(card1, card2) {
-      card1.innerHTML += '✨';
-      card2.innerHTML += '✨';
-    }
+function resetBoard() {
+  [firstCard, lockBoard] = [null, false];
+}
 
-    function checkWin() {
-      const allCards = document.querySelectorAll('.card');
-      const hiddenCards = document.querySelectorAll('.card.hidden');
-      if (allCards.length === hiddenCards.length) {
-        winMessage.style.display = 'block';
-        restartButton.style.display = 'block'; // Affiche le bouton recommencer
-      }
-    }
+function showSparkles(card1, card2) {
+  card1.innerHTML += '✨';
+  card2.innerHTML += '✨';
+}
 
-    function restartGame() {
-      startGame(currentSize); // Relance le jeu avec la même taille
-    }
+function checkWin() {
+  const allCards = document.querySelectorAll('.card');
+  const hiddenCards = document.querySelectorAll('.card.hidden');
+  if (allCards.length === hiddenCards.length) {
+    clearInterval(timer); // Arrête le chronomètre
+    winMessage.style.display = 'block';
+    restartButton.style.display = 'block';
+    updateScoreboard();
+  }
+}
 
-    // Start with default size
-    startGame(16);
- 
+function updateScoreboard() {
+  scores.push(timeElapsed);
+  scores.sort((a, b) => a - b); // Trie les scores par ordre croissant
+  if (scores.length > 10) scores.pop(); // Garde seulement les 10 meilleurs scores
+
+  scoreboard.innerHTML = `
+    <h3>Top 10 Scores</h3>
+    <ol>
+      ${scores.map(score => `<li>${score}s</li>`).join('')}
+    </ol>
+  `;
+  scoreboard.style.display = 'block';
+}
+
+function restartGame() {
+  startGame(currentSize);
+}
+
+// Lancer le jeu avec la taille par défaut
+startGame(16);
