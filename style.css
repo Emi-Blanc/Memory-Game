@@ -77,16 +77,33 @@
     }
 
     .win-message {
-      margin-top: 20px;
-      font-size: 3rem;
-      color: green;
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
+        margin-top: 10px;
+        font-size: 2rem;
+        color: black;
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      
+      .win-content {
+        display: flex;
+        flex-direction: column; /* Aligner verticalement */
+        align-items: center; /* Centrer les éléments */
+        justify-content: center;
+      }
+      
+      .win-content p {
+        margin-bottom: 10px; /* Ajouter un petit espace entre le texte et l'image */
+      }
+      
+      .win-content img {
+        width: 100px; /* Ajuster la taille de l'image selon tes besoins */
+        height: auto;
+      }
+      
 
     .sparkle {
       font-size: 2rem;
