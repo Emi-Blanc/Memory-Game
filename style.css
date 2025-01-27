@@ -1,0 +1,117 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Menlo', monospace;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: white;
+      color: black;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: black;
+      font-size: 4rem;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, orange, violet);
+      color: black;
+      transition: transform 0.3s;
+    }
+
+    .controls button:hover {
+      transform: scale(1.1);
+    }
+
+    .game-board {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f3f3f3;
+      border: 2px solid black;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.1s, background-color 0.1s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card.flipped {
+      background-color: violet;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .win-message {
+      margin-top: 20px;
+      font-size: 3rem;
+      color: green;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .sparkle {
+      font-size: 2rem;
+      animation: sparkle 1s infinite;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .restart-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, orange, violet);
+      color: black;
+      transition: transform 0.1s;
+      display: none;
+    }
+
+    .restart-button:hover {
+      transform: scale(1.1);
+    }
