@@ -12,9 +12,13 @@ let timeElapsed = 0; // Temps écoulé
 let scores = []; // Tableau des scores des 10 meilleurs joueurs
 
 function startGame(size) {
+ 
+
   currentSize = size;
   timeElapsed = 0; // Réinitialise le temps
   updateTimer(); // Met à jour l'affichage du timer
+  
+
 
   // Arrête l'ancien timer et lance un nouveau
   clearInterval(timer);
@@ -92,12 +96,15 @@ function showSparkles(card1, card2) {
 function checkWin() {
   const allCards = document.querySelectorAll('.card');
   const hiddenCards = document.querySelectorAll('.card.hidden');
+ 
+
   if (allCards.length === hiddenCards.length) {
     clearInterval(timer); // Arrête le chronomètre
     winMessage.style.display = 'block';
     restartButton.style.display = 'block';
     updateScoreboard();
   }
+  
 }
 
 function updateScoreboard() {
@@ -120,3 +127,6 @@ function restartGame() {
 
 // Lancer le jeu avec la taille par défaut
 startGame(16);
+
+
+

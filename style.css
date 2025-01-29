@@ -1,204 +1,150 @@
-/* Styles généraux */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Menlo', monospace;
-}
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: white;
-  color: black;
-  padding: 10px; /* Ajout d'un padding pour éviter que le contenu touche les bords */
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Menlo', monospace;
+    }
 
-h1 {
-  margin-bottom: 20px;
-  color: black;
-  font-size: 3rem; /* Taille réduite pour mobile */
-}
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: white;
+      color: black;
+    }
 
-.controls {
-  margin-bottom: 20px;
-}
+    h1 {
+      margin-bottom: 20px;
+      color: black;
+      font-size: 4rem;
+    }
 
-.controls button {
-  padding: 10px 15px;
-  margin: 0 5px;
-  font-size: 0.9rem; /* Réduit la taille du texte */
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(45deg, orange, violet);
-  color: black;
-  transition: transform 0.3s;
-}
+    .controls {
+      margin-bottom: 20px;
+    }
 
-.controls button:hover {
-  transform: scale(1.1);
-}
+    .controls button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, orange, violet);
+      color: black;
+      transition: transform 0.3s;
+    }
 
-.timer {
-  font-size: 1.2rem;
-  margin-bottom: 15px; /* Réduit l'espacement */
-}
+    .controls button:hover {
+      transform: scale(1.1);
+    }
 
-.game-board {
-  display: grid;
-  gap: 10px;
-  margin-top: 20px;
-}
+    .game-board {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
 
-/* Styles des cartes */
-.card {
-  width: 70px; /* Réduction de la taille des cartes */
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f3f3f3;
-  border: 2px solid black;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.1s, background-color 0.1s;
-}
+    .card {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f3f3f3;
+      border: 2px solid black;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.1s, background-color 0.1s;
+    }
 
-.card:hover {
-  transform: scale(1.05);
-}
+    .card:hover {
+      transform: scale(1.05);
+    }
 
-.card.flipped {
-  background-color: violet;
-  color: white;
-  font-size: 1.5rem; /* Ajustement de la taille des emojis */
-  font-weight: bold;
-}
+    .card.flipped {
+      background-color: violet;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+    }
 
-.hidden {
-  visibility: hidden;
-}
+    .hidden {
+      visibility: hidden;
+    }
 
-/* Message de victoire */
-.win-message {
-  margin-top: 10px;
-  font-size: 1.5rem; /* Réduit la taille du message */
-  color: black;
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+    .win-message {
+        margin-top: 10px;
+        font-size: 2rem;
+        color: black;
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      
+      .win-content {
+        display: flex;
+        flex-direction: column; /* Aligner verticalement */
+        align-items: center; /* Centrer les éléments */
+        justify-content: center;
+      }
+      
+      .win-content p {
+        margin-bottom: 10px; /* Ajouter un petit espace entre le texte et l'image */
+      }
+      
+      .win-content img {
+        width: 100px; /* Ajuster la taille de l'image selon tes besoins */
+        height: auto;
+      }
+      
 
-.win-message img {
-  width: 80px; /* Ajuste la taille de l'image */
-  height: auto;
-}
+    .sparkle {
+      font-size: 2rem;
+      animation: sparkle 1s infinite;
+    }
 
-.sparkle {
-  font-size: 1.5rem; /* Réduction de la taille */
-}
+    @keyframes sparkle {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
 
-@keyframes sparkle {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
+    .restart-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, orange, violet);
+      color: black;
+      transition: transform 0.1s;
+      display: none;
+    }
 
-/* Bouton de redémarrage */
-.restart-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(45deg, orange, violet);
-  color: black;
-  transition: transform 0.1s;
-  display: none;
-}
-
-.restart-button:hover {
-  transform: scale(1.1);
-}
-
-/* Tableau des scores */
-.scoreboard {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.scoreboard h3 {
-  margin-bottom: 10px;
-}
-
-/* --- Media Queries pour écrans petits --- */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  .card {
-    width: 50px; /* Cartes plus petites sur mobile */
-    height: 50px;
-  }
-
-  .game-board {
-    gap: 5px; /* Réduction des espaces entre les cartes */
-  }
-
-  .controls button {
-    padding: 8px 12px;
-    font-size: 0.8rem;
-  }
-
-  .timer {
-    font-size: 1rem;
-  }
-
-  .win-message {
-    font-size: 1.2rem;
-  }
-
-  .win-message img {
-    width: 60px; /* Taille réduite de l'image */
-  }
-
-  .restart-button {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-
-  .scoreboard {
-    font-size: 1rem;
-  }
-}
-
-/* --- Media Queries pour très petits écrans (téléphones < 480px) --- */
-@media (max-width: 480px) {
-  .card {
-    width: 40px; /* Cartes encore plus petites */
-    height: 40px;
-  }
-
-  .game-board {
-    gap: 5px;
-  }
-
-  .controls button {
-    font-size: 0.7rem;
-    padding: 6px 10px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-}
+    .restart-button:hover {
+      transform: scale(1.1);
+    }
+    
+    .timer {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .scoreboard {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    .scoreboard h3 {
+      margin-bottom: 10px;
+    }
+    
