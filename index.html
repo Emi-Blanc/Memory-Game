@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Memory Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Memory Game</title>
+   
 </head>
 <body>
-  <h1>Memory Game</h1>
-  <div class="controls">
-    <button onclick="startGame(16)">16 Cards</button>
-    <button onclick="startGame(36)">36 Cards</button>
-  </div>
-  <div class="timer" id="timer">Temps : 0s</div>
-  <div class="game-board"></div>
-  <div class="win-message" id="winMessage">
-    <p>Tu es le GOAT !</p> 
-    
-    <div class="sparkle">✨✨✨</div>
-  
-  </div>
-  <button class="restart-button" id="restartButton" onclick="restartGame()">Recommencer</button>
-  <script src="script.js"></script>
+    <div class="game-container">
+        <h1>Memory Game</h1>
+        <p>Temps écoulé : <span id="timer">0</span> sec</p>
+        <button onclick="startGame(16)">Jouer avec 16 cartes</button>
+        <button onclick="startGame(36)">Jouer avec 36 cartes</button>
+        <div id="game-board" class="grid"></div>
+        <p id="message"></p>
+        <button onclick="startGame(currentSize)" id="restart">Recommencer</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
-
