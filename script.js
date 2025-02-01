@@ -73,7 +73,7 @@ let emojis = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '�
         
         function endGame() {
             clearInterval(timer);
-            document.getElementById("message").innerHTML = "🎉🌟 Bravo, tu es le GOAT ! 🌟🎉";
+            document.getElementById("message").innerHTML = "🎉🌟 Bravo! 🌟🎉";
             document.getElementById("message").style.display = "block";
             
         }
