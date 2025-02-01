@@ -75,5 +75,5 @@ let emojis = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '�
             clearInterval(timer);
             document.getElementById("message").innerHTML = "🎉🌟 Bravo, tu es le GOAT ! 🌟🎉";
             document.getElementById("message").style.display = "block";
-            document.getElementById("restart").style.display = "inline-block";
+            
         }
