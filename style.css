@@ -128,7 +128,7 @@ button:hover {
 
   .game-container {
     width: 100%; /* La largeur prend tout l'écran */
-    padding: 0 20px; /* Ajoute un peu d'espace sur les côtés */
+    padding: 20 20px; /* Ajoute un peu d'espace sur les côtés */
   }
 }
 
