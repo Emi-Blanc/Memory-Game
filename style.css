@@ -85,7 +85,7 @@ button:hover {
 
 
 #message {
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-top: 30px;
   display: none;
@@ -116,13 +116,13 @@ button:hover {
   transform: scale(1.1);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   h1 {
-    font-size: 2.3rem; /* Réduit la taille du titre pour les petits écrans */
+    font-size: 2.5rem; /* Réduit la taille du titre pour les petits écrans */
   }
 
   .grid {
-    gap: 4px; /* Réduit l'espacement entre les éléments de la grille */
+    gap: 5px; /* Réduit l'espacement entre les éléments de la grille */
     grid-template-columns: repeat(4, 1fr); /* Assure que la grille s'adapte à l'écran */
   }
 
