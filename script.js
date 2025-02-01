@@ -11,7 +11,7 @@ let emojis = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '�
             let board = document.getElementById("game-board");
             board.innerHTML = "";
             document.getElementById("message").style.display = "none";
-            document.getElementById("restart").style.display = "none";
+            
             matches = 0;
             firstCard = secondCard = null;
             lockBoard = false;

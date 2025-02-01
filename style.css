@@ -115,3 +115,20 @@ button:hover {
 #restart:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem; /* Réduit la taille du titre pour les petits écrans */
+  }
+
+  .grid {
+    gap: 5px; /* Réduit l'espacement entre les éléments de la grille */
+    grid-template-columns: repeat(4, 1fr); /* Assure que la grille s'adapte à l'écran */
+  }
+
+  .game-container {
+    width: 100%; /* La largeur prend tout l'écran */
+    padding: 0 10px; /* Ajoute un peu d'espace sur les côtés */
+  }
+}
+
